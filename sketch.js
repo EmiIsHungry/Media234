@@ -1,5 +1,7 @@
 //
 let para
+let slider 
+let sliderValue =16
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -12,10 +14,26 @@ function setup() {
   //adjusting the CSS with JavaScript 
   //any style applied with js will override any styles applied with CSS
   para.style('background-color:blue')
+  para.style('margin:0')
+
+  slider = createSlider(12,72,sliderValue)
+  slider.position(0,40)
+  slider.changed(sliderChanged)
 }
 
 function draw() {
   background(220);
 
   text("this text is on the canvas",10,20)
+
+  push()
+textSize(sliderValue)
+  text(sliderValue,width/2,height/2)
+  pop()
+}
+
+// declared function that when the slider changes, update the global slider 
+function sliderChanged()
+{
+  sliderVaule = slider.value() 
 }
